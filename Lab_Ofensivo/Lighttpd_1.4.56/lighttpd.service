@@ -1,0 +1,12 @@
+[Unit]
+Description=Lighttpd web server
+After=network.target
+
+[Service]
+ExecStart=/usr/local/sbin/lighttpd -D -f /etc/lighttpd/lighttpd.conf
+ExecReload=/bin/kill -USR1 $MAINPID
+KillMode=process
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
